@@ -24,6 +24,7 @@ import org.gradle.api.Project
 
 /**
  * aspectj plugin,
+ * plugin 项目入口
  * @author simon
  * @version 1.0.0
  * @since 2016-04-20
@@ -55,7 +56,7 @@ class AJXPlugin implements Plugin<Project> {
             //build time trace
             project.gradle.addListener(new TimeTrace())
 
-            //register AspectTransform
+            //register AspectTransform 到主 application 项目里面
             AppExtension android = project.extensions.getByType(AppExtension)
             android.registerTransform(new AJXTransform(project))
         }

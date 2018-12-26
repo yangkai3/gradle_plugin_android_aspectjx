@@ -25,7 +25,8 @@ import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 
 /**
- * class description here
+ * 实际调用 aspectj 代码的处理器
+ *
  * @author simon
  * @version 1.0.0
  * @since 2018-04-23

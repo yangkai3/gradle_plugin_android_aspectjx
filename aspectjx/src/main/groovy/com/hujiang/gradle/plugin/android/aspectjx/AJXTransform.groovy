@@ -26,7 +26,8 @@ import com.hujiang.gradle.plugin.android.aspectjx.internal.procedure.*
 import org.gradle.api.Project
 
 /**
- * class description here
+ * 处理 class 转换的核心类
+ *
  * @author simon
  * @version 1.0.0
  * @since 2018-03-12

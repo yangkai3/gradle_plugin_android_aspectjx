@@ -39,8 +39,11 @@ class VariantCache {
     String variantName
     String cachePath
     String aspectPath
+    // 临时存放 include 的文件？
     String includeFilePath
+    // 临时存放排除的文件？
     String excludeFilePath
+    // 文件内写所有被 include 的 jar 的信息
     String includeJarConfigPath
 
     IncrementalStatus incrementalStatus

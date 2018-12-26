@@ -29,7 +29,8 @@ import java.util.jar.JarEntry
 import java.util.jar.JarFile
 
 /**
- * class description here
+ * 收集所有有 @Aspect 注解的 class，缓存起来，为后面注入用
+ *
  * @author simon
  * @version 1.0.0
  * @since 2018-04-23
@@ -96,6 +97,7 @@ class CacheAspectFilesProcedure extends AbsProcedure {
 
         batchTaskScheduler.execute()
 
+        // TODO yangkai 我的问题是不是就是这里没有执行到？
         if (AJXUtils.countOfFiles(variantCache.aspectDir) == 0) {
             AJXUtils.doWorkWithNoAspectj(transformInvocation)
             return false

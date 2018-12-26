@@ -60,6 +60,7 @@ class CacheInputFilesProcedure extends AbsProcedure {
                                 String subPath = path.substring(dirInput.file.absolutePath.length())
                                 String transPath = subPath.replace(File.separator, ".")
 
+                                // TODO yangkai 这里是关键
                                 boolean isInclude = AJXUtils.isIncludeFilterMatched(transPath, ajxExtensionConfig.includes) &&
                                         !AJXUtils.isExcludeFilterMatched(transPath, ajxExtensionConfig.excludes)
                                 variantCache.add(item, new File((isInclude ? variantCache.includeFilePath : variantCache.excludeFilePath) + subPath))
@@ -70,6 +71,7 @@ class CacheInputFilesProcedure extends AbsProcedure {
                         if (AJXUtils.countOfFiles(variantCache.excludeFileDir) > 0) {
                             File excludeJar = transformInvocation.getOutputProvider().getContentLocation("exclude", variantCache.contentTypes,
                                     variantCache.scopes, Format.JAR)
+                            // TODO yangkai 这里好像前面的文件夹会 merge 多次？
                             AJXUtils.mergeJar(variantCache.excludeFileDir, excludeJar)
                         }
 
@@ -82,6 +84,7 @@ class CacheInputFilesProcedure extends AbsProcedure {
                 taskScheduler.addTask(new ITask() {
                     @Override
                     Object call() throws Exception {
+                        // TODO yangkai 这里是关键
                         AJXUtils.filterJar(jarInput, variantCache, ajxExtensionConfig.includes, ajxExtensionConfig.excludes)
                         if (!variantCache.isIncludeJar(jarInput.file.absolutePath)) {
                             def dest = transformInvocation.outputProvider.getContentLocation(jarInput.name

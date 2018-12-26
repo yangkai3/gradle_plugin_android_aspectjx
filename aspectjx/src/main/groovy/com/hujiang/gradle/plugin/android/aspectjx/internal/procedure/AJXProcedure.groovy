@@ -22,7 +22,8 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
 
 /**
- * class description here
+ * 处理器的基类，不做链式处理（主要负责初始化一些参数、变量）
+ *
  * @author simon
  * @version 1.0.0
  * @since 2018-04-20
@@ -57,8 +58,10 @@ class AJXProcedure extends AbsProcedure {
                 project.tasks.findByName('preBuild').dependsOn(project.tasks.findByName("clean"))
             }
 
+            // 保存 include exclude 信息
             ajxCache.putExtensionConfig(ajxExtension)
 
+            // TODO yangkai 这是啥？
             ajxCache.ajcArgs = ajxExtension.ajcArgs
         }
 

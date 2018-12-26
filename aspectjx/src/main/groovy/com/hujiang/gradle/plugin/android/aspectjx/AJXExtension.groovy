@@ -18,6 +18,7 @@ package com.hujiang.gradle.plugin.android.aspectjx
 
 /**
  * class description here
+ * 存储 gradle 中 aspectjx 内定义的 include exclude 信息
  * @author simon
  * @version 1.0.0
  * @since 2016-05-05

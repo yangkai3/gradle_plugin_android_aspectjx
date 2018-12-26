@@ -253,6 +253,13 @@ class AJXUtils {
         }
     }
 
+    /**
+     *
+     * @param jarInput
+     * @param variantCache
+     * @param includes
+     * @param excludes
+     */
     static void filterJar(JarInput jarInput, VariantCache variantCache, List<String> includes, List<String> excludes) {
         if (includes.isEmpty() && excludes.isEmpty()) {
             //put in cache
@@ -335,6 +342,7 @@ class AJXUtils {
             FileUtils.forceMkdir(targetJar.getParentFile())
         }
 
+        // TODO yangkai 这里为什么先删了，再 merge 呢？
         FileUtils.deleteQuietly(targetJar)
 
         JarMerger jarMerger = new JarMerger(targetJar)

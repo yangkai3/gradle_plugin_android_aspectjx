@@ -21,7 +21,8 @@ import com.hujiang.gradle.plugin.android.aspectjx.internal.model.AJXExtensionCon
 import org.gradle.api.Project
 
 /**
- * class description here
+ * 处理器的基类，主要是先责任链模式的东西
+ *
  * @author simon
  * @version 1.0.0
  * @since 2018-04-23
@@ -29,6 +30,7 @@ import org.gradle.api.Project
 abstract class AbsProcedure {
 
     List<? extends AbsProcedure> procedures = new ArrayList<>()
+    // 这里变量，实际上是责任链中所有节点共享的（这个设计不太好其实）
     Project project
     AJXCache ajxCache
     AJXExtensionConfig ajxExtensionConfig

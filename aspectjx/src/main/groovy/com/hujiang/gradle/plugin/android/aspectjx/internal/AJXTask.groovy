@@ -22,7 +22,7 @@ import org.gradle.api.GradleException
 import org.gradle.api.Project
 
 /**
- * class description here
+ * 封装 aspectj 调用函数
  * @author simon
  * @version 1.0.0
  * @since 2018-03-14
