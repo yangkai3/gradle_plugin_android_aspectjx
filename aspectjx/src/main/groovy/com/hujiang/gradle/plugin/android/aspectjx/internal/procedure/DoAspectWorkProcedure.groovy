@@ -61,6 +61,7 @@ class DoAspectWorkProcedure extends AbsProcedure {
 
         ajxTask.outputJar = includeJar.absolutePath
         ajxTask.inPath << variantCache.includeFileDir
+        println "yangkai addInPath: ${variantCache.includeFileDir}"
         ajxTaskManager.addTask(ajxTask)
 
         //process jar files

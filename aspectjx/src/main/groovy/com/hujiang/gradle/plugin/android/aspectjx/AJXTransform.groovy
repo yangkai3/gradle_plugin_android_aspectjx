@@ -16,7 +16,6 @@ package com.hujiang.gradle.plugin.android.aspectjx
 
 import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
-import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.build.gradle.internal.pipeline.TransformTask
@@ -24,6 +23,8 @@ import com.google.common.collect.ImmutableSet
 import com.hujiang.gradle.plugin.android.aspectjx.internal.cache.VariantCache
 import com.hujiang.gradle.plugin.android.aspectjx.internal.procedure.*
 import org.gradle.api.Project
+
+import javax.xml.crypto.dsig.TransformException
 
 /**
  * 处理 class 转换的核心类
@@ -63,7 +64,6 @@ class AJXTransform extends Transform {
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
-
         Project project = ajxProcedure.project
 
         TransformTask transformTask = (TransformTask)transformInvocation.context

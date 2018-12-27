@@ -55,6 +55,8 @@ class CacheInputFilesProcedure extends AbsProcedure {
                     @Override
                     Object call() throws Exception {
                         dirInput.file.eachFileRecurse { File item ->
+                            println "yangkai: handle file, file: ${item.absolutePat}"
+
                             if (AJXUtils.isClassFile(item)) {
                                 String path = item.absolutePath
                                 String subPath = path.substring(dirInput.file.absolutePath.length())
@@ -63,6 +65,7 @@ class CacheInputFilesProcedure extends AbsProcedure {
                                 // TODO yangkai 这里是关键
                                 boolean isInclude = AJXUtils.isIncludeFilterMatched(transPath, ajxExtensionConfig.includes) &&
                                         !AJXUtils.isExcludeFilterMatched(transPath, ajxExtensionConfig.excludes)
+                                println "file: ${transPath}, include: ${isInclude}"
                                 variantCache.add(item, new File((isInclude ? variantCache.includeFilePath : variantCache.excludeFilePath) + subPath))
                             }
                         }
@@ -85,6 +88,7 @@ class CacheInputFilesProcedure extends AbsProcedure {
                     @Override
                     Object call() throws Exception {
                         // TODO yangkai 这里是关键
+                        println "yangkai: handle jar, file: ${jarInput.file.absolutePath}"
                         AJXUtils.filterJar(jarInput, variantCache, ajxExtensionConfig.includes, ajxExtensionConfig.excludes)
                         if (!variantCache.isIncludeJar(jarInput.file.absolutePath)) {
                             def dest = transformInvocation.outputProvider.getContentLocation(jarInput.name

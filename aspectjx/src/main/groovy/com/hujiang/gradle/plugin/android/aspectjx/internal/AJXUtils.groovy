@@ -208,7 +208,10 @@ class AJXUtils {
 
         for (String s : filters) {
             if (isContained(str, s)) {
+                println "yangkai: isFilterMatched true str: ${str} filer: ${s}"
                 return true
+            } else {
+                println "yangkai: isFilterMatched false str: ${str} filer: ${s}"
             }
         }
 
@@ -262,7 +265,7 @@ class AJXUtils {
      */
     static void filterJar(JarInput jarInput, VariantCache variantCache, List<String> includes, List<String> excludes) {
         if (includes.isEmpty() && excludes.isEmpty()) {
-            //put in cache
+            // 配置为空，则加入 include 范围内
             variantCache.addIncludeJar(jarInput.file.absolutePath)
         } else if (includes.isEmpty()) {
             boolean isExclude = false
